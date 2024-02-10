@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carousel Example</title>
+<style>
+/* Reset some default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carousel-container {
+  width: 50%; /* Make the carousel take up half of the page */
+  height: 100vh; /* Set carousel height to full viewport height */
+  overflow: hidden; /* Hide the overflow of carousel */
+  float: left; /* Float the carousel to the left */
+}
+
+.carousel-image {
+  width: 100%; /* Make the image fill the carousel container */
+  height: 100%; /* Ensure the image fills the carousel container */
+}
+
+.bgcontent {
+  float: left; /* Float the right content to the left */
+  width: 50%; /* Make the right content take up half of the page */
+  background-color: #f7efeb; /* Cream white background color */
+  min-height: 100vh; /* Ensure the background color extends to full height */
+}
+
+.right-content {
+  display: flex; /* Use flexbox for centering content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  flex-direction: column; /* Arrange content in a column */
+  padding: 20px; /* Add padding to the content */
+}
+
+.title {
+  text-align: center; /* Center align the text */
+  font-family: "ITC Garamond Condensed", "serif"; /* Apply Calvino Semibold font */
+  font-size: 50px; /* Increase the font size */
+  margin-top: 100px; /* Adjust the margin to bring the text down */
+}
+
+.form-container {
+  margin-top: 20px; /* Adjust the margin to separate the form from the text */
+  border-radius: 15px; /* Curved borders for the form */
+  overflow: hidden; 
+}
+
+.form-input {
+  margin-bottom: 10px;
+}
+
+.rectangle-box {
+  margin-top: 20px; 
+  width: 65%; 
+  height: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: px;
+}
+
+.button {
+  width: 24%; /* Adjust width to make the buttons wider */
+  padding: 10px;
+  background-color: #e0e0e0;
+  text-align: center;
+  cursor: pointer;
+  /* Increase width and height to make the buttons square */
+  width: 128px; /* Increase width to make the buttons wider */
+  height: 80px;
+  /* Make edges rounded */
+  border-radius: 15px;
+  /* Center align the text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Apply font style */
+  font-family: "ITC Garamond Condensed", "serif";
+  font-size: 20px;
+}
+
+.button.selected {
+  background-color: #9eef80;
+}
+
+.underline {
+  text-decoration: underline; /* Underline the text */
+}
+
+.additional-text {
+  text-align: center; /* Center align the additional text */
+  margin-top: 20px; /* Add margin to separate from buttons */
+}
+
+.additional-text p {
+  margin-bottom: 10px; /* Add spacing between paragraphs */
+}
+
+.add-to-cart-button {
+  width: 100%; /* Full width */
+  padding: 10px;
+  background-color: #d1e030; /* Blue color */
+  color: #fff; /* White text color */
+  text-align: center;
+  cursor: pointer;
+  border: none; /* Remove default button border */
+  border-radius: 15px; /* Rounded edges */
+  font-family: "ITC Garamond Condensed", "serif"; /* Apply font style */
+  font-size: 20px; /* Font size */
+}
+
+//* New CSS for column-wise accordion */
+.accordion {
+  width: 100%;
+}
+
+.accordion-item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.accordion-header {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.accordion-header:hover {
+  background-color: #f0f0f0;
+}
+
+.accordion-content {
+  display: none;
+  padding: 15px;
+}
+
+.active .accordion-content {
+  display: block;
+}
+
+</style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <img class="carousel-image" src="https://raw.githubusercontent.com/sakethwithanh/Saketh-Ragirolla/main/Screenshot%202024-02-10%20114616.png" alt="Carousel Image">
+</div>
+
+<div class="bgcontent">
+  <div class="right-content">
+    <!-- Title -->
+    <div class="title">"Drizzle" & "Sizzle"<br><span class="underline">Extra Virgin Olive Oil</span></div>
+    
+    <!-- Rectangle Box -->
+    <form class="rectangle-box ">
+      <!-- Button Container -->
+      <div class="button-container">
+        <div class="button" onclick="toggleButton(this)">Button 1</div>
+        <div class="button" onclick="toggleButton(this)">Button 2</div>
+        <div class="button" onclick="toggleButton(this)">Button 3</div>
+        <div class="button" onclick="toggleButton(this)">Button 4</div>
+      </div>
+      <!-- Additional Text -->
+      <div class="additional-text">
+        <p>One Time Purchase $111</p>
+        <p>Subscribe & Save $102</p>
+      </div>
+      <!-- Add to Cart Button -->
+      <button class="add-to-cart-button">Add to Cart</button>
+    </form>
+
+    <!-- Accordion -->
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">DESCRIPTION</div>
+        <div class="accordion-content">
+          DRIZZLE: 500ML
+
+          Extra Virgin finishing oil made from olives that are picked early, when flavor is bold and antioxidants are highest. Made for eating, never heating.
+          
+          SIZZLE: 750ML
+          Extra Virgin cooking oil made from mature, mid-season olives that yield a more mellow flavor. Use it every day, in every way.
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">HARVEST</div>
+        <div class="accordion-content">
+          DRIZZLE:
+          Harvested in October, before the olives have ripened fully. Picked by hand because young olives need a firm yank to loosen up.
+          
+          SIZZLE:
+          Harvested in November and December, when the olives are more mature. They’re pretty laid back by this point, so it only takes a few shakes to get them off the branch.
+        </div>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">USE CASES</div>
+        <div class="accordion-content">
+          DRIZZLE:
+          A little Drizzle goes a long way! Use it on and around things like ice cream, pesto, popcorn, salads, sandwiches or even directly on your tongue (we won’t tell).
+          
+          SIZZLE:
+          If you would put it in or on top of an oven, use sizzle. Chicken Cutlets, Sheet Pan Veggies, Fried Rice, or even Chocolate Chip Cookies! You name it, Sizzle sizzles it.
+        </div>
+      </div>
+    </div>
+    
+
+<script>
+function toggleButton(button) {
+  var buttons = document.querySelectorAll('.button');
+  buttons.forEach(function(btn) {
+    if (btn === button) {
+      btn.classList.add('selected');
+    } else {
+      btn.classList.remove('selected');
+    }
+  });
+}
+
+function toggleAccordion(header) {
+  var content = header.nextElementSibling;
+  if (content.style.display === "block") {
+    content.style.display = "none";
+    header.parentElement.classList.remove("active");
+  } else {
+    content.style.display = "block";
+    header.parentElement.classList.add("active");
+  }
+}
+</script>
+
+</body>
+</html>
